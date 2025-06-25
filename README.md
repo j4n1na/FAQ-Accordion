@@ -51,12 +51,14 @@ Users should be able to:
 Using the aria-expanded attribute on buttons is crucial for screen readers to communicate the current state of each accordion item. It improves accessibility and makes the UI more inclusive.
 
 ```html
-<button aria-expanded="false" aria-controls="answer1" id="question1">
-  What is Frontend Mentor?
-</button>
-<div id="answer1" role="region" aria-labelledby="question1" hidden>
-  Frontend Mentor offers realistic coding challenges...
-</div>
+  <button class="accordion-question" aria-expanded="false">
+        Is Frontend Mentor free?
+        <img src="./assets/images/icon-plus.svg" alt="Expand Icon" class="icon">
+      </button>
+      <div class="accordion-answer">
+        Yes, Frontend Mentor offers both free and premium coding challenges, with the free 
+        option providing access to a range of projects suitable for all skill levels.
+      </div>
 ```
 
 2. Smooth accordion animations using CSS transitions and JavaScript:
@@ -68,17 +70,19 @@ if (button.getAttribute('aria-expanded') === 'true') {
 } else {
   answer.style.maxHeight = answer.scrollHeight + 'px';  // opens it smoothly
 }
-```
 
-3. Ensuring only one accordion item is open at a time:
-To improve usability, I implemented logic that closes all other accordion items when opening a new one. This involved looping through all buttons and resetting their state before opening the clicked one.
-
-```js
-accordionButtons.forEach(btn => {
-  btn.setAttribute('aria-expanded', 'false');
-  btn.nextElementSibling.style.maxHeight = null;
-  btn.querySelector('.icon').src = './assets/images/icon-plus.svg';
-});
+if (button.getAttribute('aria-expanded') === 'true') {
+      button.setAttribute('aria-expanded', 'false');
+      answer.style.maxHeight = null;
+      icon.src = './assets/images/icon-plus.svg'; //  Plus-Icon
+    } 
+    else {
+      // Close all
+      accordionButtons.forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.nextElementSibling.style.maxHeight = null;
+        btn.querySelector('.icon').src = './assets/images/icon-plus.svg';
+      });}
 ```
 
 ## Author
