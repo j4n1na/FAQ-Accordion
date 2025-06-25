@@ -1,0 +1,123 @@
+:root {
+  --white: hsl(0, 100%, 100%);
+  --purple-100: hsl(275, 100%, 97%);
+  --purple-600: hsl(292, 16%, 49%);
+  --purple-950: hsl(292, 42%, 14%);
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('./assets/fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+ 
+  
+}
+
+* {
+  box-sizing: border-box; /*include padding and border inside the element's total width and height*/
+  margin: 0;                /*removes all default outer spacing (margin) from every element*/
+  padding: 0;               /*removes all default inner spacing (padding) from all elements*/
+  font-family: 'Work Sans', sans-serif;
+}
+
+body {
+  background-color: var(--purple-100);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;  /*stays in its normal place (it doesn't move unless you use top, left, etc.*/
+}
+
+/* Background image for desktop */
+.background {
+  position: absolute;  /*Makes the element positioned relative to its nearest positioned parent (body)*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40vh;  /*means 40% of the visible screen height*/
+  background: url('./assets/images/background-pattern-desktop.svg') no-repeat top center / cover; /*no-repeat → The image will not repeat.
+
+                                                                                                    top center → The image will be aligned to the top and centered horizontally.
+
+                                                                                                  / cover → The image will scale to fully cover the background area without stretching.*/
+  z-index: -1;  /*	Sends the background behind the content*/
+}
+
+/* Background image for mobile */
+@media (max-width: 768px) {
+  .background {
+    background: url('./assets/images/background-pattern-mobile.svg') no-repeat top center / cover;
+  }
+}
+
+.accordion-container {
+  background-color: var(--white);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.star-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.header h1 {
+  font-size: 40px;
+  color: var(--purple-950);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--purple-100);
+  padding: 15px 0;
+}
+
+.accordion-question {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--purple-950);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.accordion-question:hover{
+  color: var(--purple-600);
+  outline: none;
+}
+
+.accordion-question .icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.accordion-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  color: var(--purple-600);
+  margin-top: 10px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.accordion-question[aria-expanded="true"] .icon {
+  transform: rotate(180deg);
+}
