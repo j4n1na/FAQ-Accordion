@@ -47,7 +47,7 @@ Users should be able to:
 
 ### What I learned
 
-### 1. Managing state with aria-expanded for accessibility
+1. Managing state with aria-expanded for accessibility
 Using the aria-expanded attribute on buttons is crucial for screen readers to communicate the current state of each accordion item. It improves accessibility and makes the UI more inclusive.
 
 ```html
@@ -59,7 +59,7 @@ Using the aria-expanded attribute on buttons is crucial for screen readers to co
 </div>
 ```
 
-### 2. Smooth accordion animations using CSS transitions and JavaScript
+2. Smooth accordion animations using CSS transitions and JavaScript
 I learned how to use max-height with CSS transitions to smoothly open and close the accordion content. Since max-height cannot transition to/from auto, I used JavaScript to dynamically set the height based on content’s scrollHeight.
 
 ```js
@@ -70,7 +70,7 @@ if (button.getAttribute('aria-expanded') === 'true') {
 }
 ```
 
-### 3. Ensuring only one accordion item is open at a time
+3. Ensuring only one accordion item is open at a time
 To improve usability, I implemented logic that closes all other accordion items when opening a new one. This involved looping through all buttons and resetting their state before opening the clicked one.
 
 ```js
